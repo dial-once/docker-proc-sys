@@ -5,7 +5,12 @@ RUN apk update && apk upgrade && \
     apk add --no-cache bash
 
 ADD run.sh /
-ENV KEEPALIVE **None**
-ENV DEFRAG **None**
-VOLUME /data
+ENV KEEPALIVE NOPE
+ENV HUGEPAGE NOPE
+
+VOLUME /data/proc
+VOLUME /data/etc
+
+ADD scripts /scripts
+
 CMD ["/run.sh"]
